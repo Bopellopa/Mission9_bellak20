@@ -3,8 +3,9 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "bootstrap@5.2.3"
+      "library": "bootstrap@5.2.3",
       "destination": "wwwroot/lib/"
     }
   ]
 }
+//pulling in bootstrap

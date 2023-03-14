@@ -1,14 +1,36 @@
-﻿<!DOCTYPE html>
+﻿@*<!DOCTYPE html>
 
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+    </head>
+    <body>
+        <div>
+            @RenderBody()
+        </div>
+        <footer>goodbye</footer>
+    </body>
+    </html>*@
+@*some bootstrap implementation*@
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>BookStore</title>
+    <link href="/lib/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-brand ml-2">Bookstore</span>
     </div>
-    <footer>goodbye</footer>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            we love books
+        </div>
+        <div class="col-9">
+            @RenderBody()
+        </div>
+    </div>
 </body>
 </html>

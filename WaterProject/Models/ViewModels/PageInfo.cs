@@ -7,6 +7,7 @@ namespace WaterProject.Models.ViewModels
 {
     public class PageInfo
     {
+        //calc num of books to calc num of pages
         public int TotalNumProjects { get; set; }
         public int ProjectsPerPage {get;set;}
         public int CurrentPage { get; set; }

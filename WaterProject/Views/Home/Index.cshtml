@@ -7,11 +7,11 @@
 
 
 <h1>Book List</h1>
-
+@*pulls from model to list info for each book*@
 @foreach (Books b in Model.Books)
             {
                 <h3>@b.BookId</h3>
-                <ul>
+                <ul class="row m-1 p-1">
                     <li>Book Title: @b.Title</li>
                     <li>Book Author: @b.Author</li>
                     <li>Book Publisher: @b.Publisher</li>
@@ -23,5 +23,7 @@
                 </ul>
             }
 
-
-<div page-blah="@Model.PageInfo" page-action="Index"></div>
+@*buttons to next page*@
+<div  page-blah="@Model.PageInfo" page-action="Index"  page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
