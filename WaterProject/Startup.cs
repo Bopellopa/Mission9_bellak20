@@ -50,6 +50,8 @@ namespace WaterProject
 
             // Adds Basket as a scoped service using SessionBasket.GetBasket method
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method is used to configure the HTTP request pipeline
