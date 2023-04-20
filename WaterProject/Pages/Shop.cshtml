@@ -1,8 +1,12 @@
-﻿@page
+﻿@*// The @page  directive specifies that this file is a Razor Page.
+// The @model directive specifies the model class for this Razor Page.*@
+@page
 @model WaterProject.Pages.ShopModel
 @{
 }
+
 <h2>Your Cart</h2>
+@*// This table displays the items in the shopping cart.*@
 
 <table class="table table-bordered table-striped">
     <thead>
@@ -14,23 +18,26 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var i in Model.basket.Items)
-            {
-                <tr>
-                    <td>@i.Books.Title</td>
-                    <td>@i.Quantity</td>
-                    <td>@i.Books.Price</td>
-                    <td>@((i.Quantity * i.Books.Price).ToString("c"))</td>
-                </tr>
-            }
+        @*// This foreach loop iterates over each item in the shopping cart and displays it in the table.*@
+        @foreach (var i in Model.basket.Items)
+        {
+            <tr>
+                <td>@i.Books.Title</td>
+                <td>@i.Quantity</td>
+                <td>@i.Books.Price</td>
+                <td>@((i.Quantity * i.Books.Price).ToString("c"))</td>
+            </tr>
+        }
     </tbody>
     <tfoot>
+        @*// This row displays the total price of all items in the shopping cart.*@
         <tr>
             <td colspan="3">Total:</td>
             <td>@Model.basket.CalculateTotal().ToString("c")</td>
         </tr>
     </tfoot>
 </table>
+@*// This link takes the user back to the previous page they were on.*@
 
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
