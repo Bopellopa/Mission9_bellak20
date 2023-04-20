@@ -3,6 +3,9 @@
 *@
 @*shared file that pulls from model to display data*@
 @model Books
+    @*The HTML code has various elements displaying information about the book, 
+        such as the book's title, author, publisher, classification, category, page count, and price. 
+        There is also a button that allows the user to add the book to their shopping cart.*@
 
 <div class="card card-outline-primary m-1 p-1">
     <div class="bg-light p-1">
@@ -21,9 +24,11 @@
         <li>Book Page Count: @Model.PageCount</li>
         <li>Book Price: @Model.Price</li>
     </ul>
-
+    @*button that links to shopping cart so user can buy books. The form element around the button is used to 
+        submit the book information to the server when the user clicks the "Buy it!" button. 
+        The hidden input fields specify the book ID and the return URL to the shopping page.*@
     <form method="post" asp-page="/Shop">
-        <input type="hidden" asp-for="@Model.BookId"/>
+        <input type="hidden" asp-for="@Model.BookId" />
         <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
         <span class="card-text">
             <button type="submit" class="primary btn btn-success btn-sm float-end">Buy it!</button>

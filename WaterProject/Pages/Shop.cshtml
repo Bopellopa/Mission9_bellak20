@@ -20,7 +20,7 @@
                     <td>@i.Books.Title</td>
                     <td>@i.Quantity</td>
                     <td>@i.Books.Price</td>
-                    <td>@(i.Quantity * i.Books.Price)</td>
+                    <td>@((i.Quantity * i.Books.Price).ToString("c"))</td>
                 </tr>
             }
     </tbody>
