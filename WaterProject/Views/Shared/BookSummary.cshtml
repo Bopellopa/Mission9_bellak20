@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@*shared file that pulls from model to display data*@
+@model Books
+
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-light p-1">
+        <h4>@Model.BookId</h4>
+        <span class="badge bg-info" style="float:right">
+        </span>
+    </div>
+
+    <ul>
+        <li>Book Title: @Model.Title</li>
+        <li>Book Author: @Model.Author</li>
+        <li>Book Publisher: @Model.Publisher</li>
+        <li>Book Isbn: @Model.Isbn</li>
+        <li>Book Classification: @Model.Classification</li>
+        <li>Book Category: @Model.Category</li>
+        <li>Book Page Count: @Model.PageCount</li>
+        <li>Book Price: @Model.Price</li>
+    </ul>
+
+    <form method="post" asp-page="/Shop">
+        <input type="hidden" asp-for="@Model.BookId"/>
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-text">
+            <button type="submit" class="primary btn btn-success btn-sm float-end">Buy it!</button>
+
+        </span>
+    </form>
+</div>

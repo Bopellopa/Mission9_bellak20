@@ -6,21 +6,11 @@
 
 
 
-<h1>Book List</h1>
-@*pulls from model to list info for each book*@
+
+@*pulls from partial view to list info for each book*@
 @foreach (Books b in Model.Books)
             {
-                <h3>@b.BookId</h3>
-                <ul class="row m-1 p-1">
-                    <li>Book Title: @b.Title</li>
-                    <li>Book Author: @b.Author</li>
-                    <li>Book Publisher: @b.Publisher</li>
-                    <li>Book Isbn: @b.Isbn</li>
-                    <li>Book Classification: @b.Classification</li>
-                    <li>Book Category: @b.Category</li>
-                    <li>Book Page Count: @b.PageCount</li>
-                    <li>Book Price: @b.Price</li>
-                </ul>
+<partial name="BookSummary" model="b"/>
             }
 
 @*buttons to next page*@

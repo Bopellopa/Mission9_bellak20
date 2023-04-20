@@ -33,6 +33,10 @@ namespace WaterProject
            });
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository >();
+            services.AddRazorPages
+                ();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,10 +49,20 @@ namespace WaterProject
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
+            // endpoints to make it possible to click on categories and different pages and it loads properly
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("categorypage", "{category}/Page{pageNum}", new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "Page{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+                endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "Index", pageNum = 1 });
+                
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

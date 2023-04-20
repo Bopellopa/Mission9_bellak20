@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>BookStore</title>
     <link href="/lib/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="bg-dark text-white p-2">
@@ -26,10 +27,12 @@
     </div>
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
-            we love books
+            <vc:category></vc:category>
         </div>
         <div class="col-9">
-            @RenderBody()
+            <div>
+                @RenderBody()
+            </div>
         </div>
     </div>
 </body>
