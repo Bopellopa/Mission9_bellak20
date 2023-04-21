@@ -10,7 +10,11 @@ namespace WaterProject.Controllers
 {
     public class HomeController : Controller
     {
+
         private IBookstoreRepository repo;
+
+
+
         public HomeController(IBookstoreRepository temp)
         {
             repo = temp;

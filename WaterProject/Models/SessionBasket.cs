@@ -13,13 +13,15 @@ namespace WaterProject.Models
     // SessionBasket inherits from Basket
     public class SessionBasket : Basket
     {
+ 
         // Static method to retrieve basket from session
         public static Basket GetBasket(IServiceProvider services)
         {
             // Retrieve session object from HttpContextAccessor service
-            ISession session = services.GetRequiredService<HttpContextAccessor>()?.HttpContext.Session;
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             // Deserialize session object to SessionBasket, or create a new SessionBasket if it's null
             SessionBasket basket = session?.GetJson<SessionBasket>("Basket") ?? new SessionBasket();
+            basket.Session = session;
             return basket;
         }
         // Ignored property for Session object
@@ -38,6 +40,11 @@ namespace WaterProject.Models
         {
             base.RemoveItem(book);
             Session.SetJson("Basket", this);
+        }
+
+        internal static SessionBasket GetBasket(IHttpContextAccessor httpContextAccessor)
+        {
+            throw new NotImplementedException();
         }
 
         // Override method to clear basket, and remove it from session

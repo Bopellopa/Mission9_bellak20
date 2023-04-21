@@ -18,9 +18,10 @@ namespace WaterProject.Pages
 
         // Here we define the constructor of the ShopModel class that receives an instance of the IBookstoreRepository interface.
         // We use this constructor to set the value of the private repo property.
-        public ShopModel(IBookstoreRepository temp)
+        public ShopModel(IBookstoreRepository temp, Basket b)
         {
             repo = temp;
+            basket = b;
         }
 
         // Here we define two public properties that we will use in the Razor view.
@@ -47,6 +48,11 @@ namespace WaterProject.Pages
 
             // We redirect the user to the page specified in the returnUrl parameter.
             return RedirectToPage(new { ReturnUrl = returnUrl });
+        }
+        public IActionResult OnPostRemove(int BookId, string returnUrl)
+        {
+            basket.RemoveItem(basket.Items.First(x => x.Books.BookId == BookId).Books);
+            return RedirectToPage((new { ReturnUrl = returnUrl }));
         }
     }
 }

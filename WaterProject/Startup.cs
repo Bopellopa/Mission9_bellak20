@@ -27,6 +27,8 @@ namespace WaterProject
         // This method is used to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add HttpContextAccessor to services
+            services.AddHttpContextAccessor();
             // Adds services for controllers and views
             services.AddControllersWithViews();
 
@@ -50,8 +52,11 @@ namespace WaterProject
 
             // Adds Basket as a scoped service using SessionBasket.GetBasket method
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
+
         }
 
         // This method is used to configure the HTTP request pipeline
