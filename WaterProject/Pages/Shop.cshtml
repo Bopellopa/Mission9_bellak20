@@ -44,9 +44,11 @@
         </tr>
     </tfoot>
 </table>
+
 @*// This link takes the user back to the previous page they were on.*@
 
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
-    <a class="btn btn-primary">Checkout</a>
+    @*links to checkout page*@
+    <a class="btn btn-primary" asp-controller="Purchase" asp-action="Checkout" >Checkout</a>
 </div>

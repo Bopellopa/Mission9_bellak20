@@ -40,6 +40,8 @@ namespace WaterProject
 
             // Adds EFBookstoreRepository as a scoped service
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+            // Adds EFPurchaseRepository as a scoped service
+            services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
 
             // Adds Razor Pages as a service
             services.AddRazorPages();
@@ -52,7 +54,8 @@ namespace WaterProject
 
             // Adds Basket as a scoped service using SessionBasket.GetBasket method
             services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
-            
+
+            // Registers the HttpContextAccessor as a singleton service in the dependency injection container. This service provides access to the current HttpContext.
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             

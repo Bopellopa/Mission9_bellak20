@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -56,7 +57,8 @@ namespace WaterProject.Models
     // Class to represent a line item in the shopping basket
     public class BasketLineItem
     {
-        public int LineId { get; set; }
+        [Key]
+        public int LineId { get; set; } //an id for each line
         public Books Books { get; set; } // The book being purchased
         public Books Price { get; set; } // The price of the book (not used in the current implementation)
         public int Quantity { get; set; } // The quantity of the book being purchased
